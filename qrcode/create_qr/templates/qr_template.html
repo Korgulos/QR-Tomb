@@ -1,0 +1,6 @@
+{% load qr_code %}
+{% load segno_qr %}
+
+<p class="success">Form submitted successfully! ✅</p>
+<p>{{ qr_text }}</p>
+<div><img src="{% qr_url_from_text qr_text dark_color="#cb1010" light_color="#869afe" size=10 version=6 image_format='png' %}" alt="{{ qr_text }}"></div>
