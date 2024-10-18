@@ -4,17 +4,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Simple form</title>
+    <title>QR Maker</title>
     <script src="https://unpkg.com/htmx.org@1.9.4" integrity="sha384-zUfuhFKKZCbHTY6aRR46gxiqszMk5tcHjsVFxnUo8VMus4kHGVdIYVbOYYNlKmHV" crossorigin="anonymous"></script>
 </head>
 <body>
-<h1>Please add your most valuable data for us to sell:</h1>
+<h1>Please add your URL for qrcode creation:</h1>
 
 <form hx-post="{% url 'create-qrcode-post' %}" hx-target="#qr-code">
     {% csrf_token %}
-    <input type="text" name="url_qr" placeholder="Url for Qr" required>
-    <input type="color" name="dark_color_qr" placeholder="Dark color for Qr" required>
-    <input type="color" name="light_color_qr" placeholder="Light color for Qr" value="#ffffff" required>
+    {{ form }}
     <input type="submit" value="Submit">
 </form>
 <div id="qr-code">
