@@ -10,16 +10,15 @@
 <body>
 <h1>Please add your most valuable data for us to sell:</h1>
 
-<form hx-post="{% url 'sample-post' %}" hx-target="#message">
+<form hx-post="{% url 'create-qrcode-post' %}" hx-target="#message">
     {% csrf_token %}
-    <input type="text" name="name" placeholder="Name" required>
-    <input type="email" name="email" placeholder="Email" required>
-    <input type="color" name="favorite_color" placeholder="Favorite color" required>
+    <input type="text" name="url_qr" placeholder="Url for Qr" required>
+    <input type="color" name="dark_color_qr" placeholder="Dark color for Qr" required>
+    <input type="color" name="light_color_qr" placeholder="Light color for Qr" required>
     <input type="submit" value="Submit">
 </form>
 <div id="message">
-    <p>{{ qr_text }}</p>
-    <div><img src="{% qr_url_from_text  qr_text dark_color="#cb1010" light_color="#869afe" size=10 version=6 image_format='png' %}" alt="Hello World!"></div>
+    {% include "qr_template.html" %}
 </div>
 </body>
 </html>

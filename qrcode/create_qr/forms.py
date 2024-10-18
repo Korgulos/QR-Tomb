@@ -3,6 +3,6 @@ from django import forms
 
 
 class SampleForm(forms.Form):
-    email = forms.CharField()
-    name = forms.CharField(min_length=3)
-    favorite_color = forms.CharField()
+    url_qr = forms.CharField()
+    dark_color_qr = forms.CharField()
+    light_color_qr = forms.CharField()

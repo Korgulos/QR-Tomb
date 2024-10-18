@@ -5,13 +5,14 @@ from django.http import HttpResponse
 from .forms import SampleForm
 
 
-def sample_post(request, *args, **kwargs):
+def create_qrcode_post(request, *args, **kwargs):
     form = SampleForm(request.POST or None)
 
     if form.is_valid():
-        print(f"{ form.cleaned_data = }")
-        context = {"qr_text": form.cleaned_data["name"]}
-        return render(request, "qr_template.html", context)
+        print(f"{ form = }")
+        context = form.cleaned_data
+        print(f"{ context['url_qr'] = }")
+        return render(request, "positive_massage.html", context)
 
     else:
         return HttpResponse(
@@ -22,6 +23,6 @@ def sample_post(request, *args, **kwargs):
 def example(request):
 
     text = "Trt Trt Trt"
-    context = {"qr_text": text}
-
+    context = {"url_qr": text, "dark_color_qr": "#000000", "light_color_qr": "#ffffff"}
+    print(f"{ context = }")
     return render(request, "example.html", context)

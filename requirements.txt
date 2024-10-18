@@ -1,0 +1,15 @@
+annotated-types==0.7.0
+asgiref==3.8.1
+colorama==0.4.6
+Django==5.1.2
+django-qr-code==4.1.0
+django-segno-qr==1.0.2
+pillow==11.0.0
+pydantic==2.9.2
+pydantic_core==2.23.4
+qrcode==8.0
+qrcode-artistic==3.0.2
+segno==1.6.1
+sqlparse==0.5.1
+typing_extensions==4.12.2
+tzdata==2024.2
