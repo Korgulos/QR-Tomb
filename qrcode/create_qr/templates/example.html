@@ -10,14 +10,14 @@
 <body>
 <h1>Please add your most valuable data for us to sell:</h1>
 
-<form hx-post="{% url 'create-qrcode-post' %}" hx-target="#message">
+<form hx-post="{% url 'create-qrcode-post' %}" hx-target="#qr-code">
     {% csrf_token %}
     <input type="text" name="url_qr" placeholder="Url for Qr" required>
     <input type="color" name="dark_color_qr" placeholder="Dark color for Qr" required>
-    <input type="color" name="light_color_qr" placeholder="Light color for Qr" required>
+    <input type="color" name="light_color_qr" placeholder="Light color for Qr" value="#ffffff" required>
     <input type="submit" value="Submit">
 </form>
-<div id="message">
+<div id="qr-code">
     {% include "qr_template.html" %}
 </div>
 </body>
