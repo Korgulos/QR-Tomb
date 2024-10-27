@@ -10,24 +10,39 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
+from decouple import config
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+HOST_TUNEL = config("HOST_TUNEL", default=None)
+CSRF_TRUSTED_TUNEL = config("CSRF_TRUSTED_TUNEL", default=None)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-+)r9y+_-2=cjgk5%%@spxal+txo-@bt52biqlqd86jg0cop*&@"
+SECRET_KEY = config("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config("DEBUG", default=False)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [HOST_TUNEL]
 
+if DEBUG:
+    ALLOWED_HOSTS += [
+        "127.0.0.1",
+        "localhost"
+    ]
 
+CSRF_TRUSTED_ORIGINS = [CSRF_TRUSTED_TUNEL]
+
+if DEBUG:
+    CSRF_TRUSTED_ORIGINS += [
+        "http://127.0.0.1:8080",
+        "http://localhost"
+    ]
 # Application definition
 
 INSTALLED_APPS = [

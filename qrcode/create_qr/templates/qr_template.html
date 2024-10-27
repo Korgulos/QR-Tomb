@@ -1,5 +1,4 @@
 {% load qr_code %}
-{% load segno_qr %}
 
 <p>{{ url_qr }}</p>
-<div><img src="{% qr_url_from_text url_qr dark_color=dark_color_qr light_color=light_color_qr size=4 version=10 image_format='png' %}" alt="{{ url_qr }}"></div>
+<div><img src="{% qr_url_from_text url_qr dark_color=dark_color_qr light_color=light_color_qr alignment_dark_color=alignment_dark_color_qr alignment_light_color=alignment_light_color_qr dark_module_color=dark_module_color_qr data_dark_color=data_dark_color_qr data_light_color=data_light_color_qr finder_dark_color=finder_dark_color_qr finder_light_color=finder_light_color_qr format_dark_color=format_dark_color_qr format_light_color=format_light_color_qr quiet_zone_color=quiet_zone_color_qr separator_color=separator_color_qr timing_dark_color=timing_dark_color_qr timing_light_color=timing_light_color_qr version_dark_color=version_dark_color_qr version_light_color=version_light_color_qr size='T' image_format='png' %}" alt="{{ url_qr }}"></div>
