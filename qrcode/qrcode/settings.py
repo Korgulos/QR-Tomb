@@ -16,8 +16,8 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-HOST_TUNEL = config("HOST_TUNEL", default=None)
-CSRF_TRUSTED_TUNEL = config("CSRF_TRUSTED_TUNEL", default=None)
+HOST_TUNNEL = config("HOST_TUNNEL", default=None)
+CSRF_TRUSTED_TUNNEL = config("CSRF_TRUSTED_TUNNEL", default=None)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -28,21 +28,15 @@ SECRET_KEY = config("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config("DEBUG", default=False)
 
-ALLOWED_HOSTS = [HOST_TUNEL]
+ALLOWED_HOSTS = [HOST_TUNNEL]
 
 if DEBUG:
-    ALLOWED_HOSTS += [
-        "127.0.0.1",
-        "localhost"
-    ]
+    ALLOWED_HOSTS += ["127.0.0.1", "localhost"]
 
-CSRF_TRUSTED_ORIGINS = [CSRF_TRUSTED_TUNEL]
+CSRF_TRUSTED_ORIGINS = [CSRF_TRUSTED_TUNNEL]
 
 if DEBUG:
-    CSRF_TRUSTED_ORIGINS += [
-        "http://127.0.0.1:8080",
-        "http://localhost"
-    ]
+    CSRF_TRUSTED_ORIGINS += ["http://127.0.0.1:8080", "http://localhost"]
 # Application definition
 
 INSTALLED_APPS = [
@@ -52,7 +46,10 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    # my app's
     "create_qr",
+    "users_qr",
+    # proprietary app's
     "qr_code",
     "segno_qr",
 ]
@@ -135,7 +132,16 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+MEDIA_URL = "media/"
+MEDIA_ROOT = [
+    BASE_DIR / "../cdn/",
+]
