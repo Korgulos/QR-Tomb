@@ -23,6 +23,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path("", include("create_qr.urls")),
+    path("users/", include("users_qr.urls")),
     path("qr_code/", include("qr_code.urls", namespace="qr_code")),
     path("admin/", admin.site.urls),
 ]
