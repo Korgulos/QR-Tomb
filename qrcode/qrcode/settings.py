@@ -31,12 +31,19 @@ DEBUG = config("DEBUG", default=False)
 ALLOWED_HOSTS = [HOST_TUNNEL]
 
 if DEBUG:
-    ALLOWED_HOSTS += ["127.0.0.1", "localhost"]
+    ALLOWED_HOSTS += [
+        "127.0.0.1",
+        "localhost",
+        "*",
+    ]
 
 CSRF_TRUSTED_ORIGINS = [CSRF_TRUSTED_TUNNEL]
 
 if DEBUG:
-    CSRF_TRUSTED_ORIGINS += ["http://127.0.0.1:8080", "http://localhost"]
+    CSRF_TRUSTED_ORIGINS += [
+        "http://127.0.0.1:8080",
+        "http://localhost",
+    ]
 # Application definition
 
 INSTALLED_APPS = [
